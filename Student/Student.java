@@ -2,12 +2,6 @@ package Java.Student;
 
 import java.util.*;
 
-// Each student has a name, roll number, and 3 subject marks
-
-// Calculate average and assign grade(A/B/C)
-
-// Find highest average
-
 public class Student {
     private String name;
     private Integer MIS;
@@ -65,9 +59,9 @@ public class Student {
         int subjectCount = scanner.nextInt();
         scanner.nextLine(); // consume the '\n'
 
-        List<Subject> subjects = studentUtils.storeSubjectData(subjectCount);
+        List<Subject> subjects = studentUtils.storeSubjectData(subjectCount, scanner);
 
-        List<Student> students = studentUtils.storeStudentData(studentCount, subjects);
+        List<Student> students = studentUtils.storeStudentData(studentCount, subjects, scanner);
         // studentUtils.printStudents(students);
 
         for (int i = 0; i < subjectCount; i++) {
