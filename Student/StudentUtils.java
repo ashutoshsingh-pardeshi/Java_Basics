@@ -4,11 +4,9 @@ import java.util.*;
 
 public class StudentUtils {
 
-    public List<Student> storeStudentData(Integer studentCount, List<Subject> subjects) {
+    public List<Student> storeStudentData(Integer studentCount, List<Subject> subjects, Scanner scanner) {
         List<Student> students = new ArrayList<>();
-        
-        Scanner scanner = new Scanner(System.in);
-        
+
         for (int i = 0; i < studentCount; i++) {
             System.out.print("Student MIS : ");
             Integer MIS = scanner.nextInt();
@@ -17,31 +15,27 @@ public class StudentUtils {
             System.out.print("Enter Name of Student " + (i + 1) + ": ");
             String name = scanner.nextLine();
 
-            System.out.println("Add subject marks : ");
+            System.out.println("Add subject marks below");
             List<Subject> studentSubjects = new ArrayList<>();
 
             for (Subject subject : subjects) {
-                System.out.print("Add marks for" + subject + ": ");
+                System.out.print("Add marks for " + subject.getName() + " : ");
                 float marks = scanner.nextFloat();
 
+                // Creating a new subject instance
                 Subject newSubject = new Subject(subject.getId(), subject.getName());
                 newSubject.assignMarks(marks);
                 studentSubjects.add(newSubject);
                 scanner.nextLine(); // consume the '\n'
-                System.out.println("");
             }
-
             students.add(new Student(MIS, name, studentSubjects));
+            
         }
-
-        scanner.close();
 
         return students;
     }
 
-    public List<Subject> storeSubjectData(Integer subjectCount) {
-        Scanner scanner = new Scanner(System.in);
-
+    public List<Subject> storeSubjectData(Integer subjectCount, Scanner scanner) {
         List<Subject> subjects = new ArrayList<>();
 
         for (int i = 0; i < subjectCount; i++) {
@@ -56,8 +50,6 @@ public class StudentUtils {
 
             subjects.add(new Subject(id, name));
         }
-
-        scanner.close();
 
         return subjects;
     }
@@ -80,6 +72,8 @@ public class StudentUtils {
         }
 
         System.out.println("The topper in " + subjectName + " is " + topper.getName());
+        
+
     }
 
     public void printTopper(List<Student> students) {
@@ -91,6 +85,8 @@ public class StudentUtils {
         }
 
         System.out.println("The topper in is " + topper.getName());
+        
+
     }
 
 }
