@@ -29,7 +29,7 @@ public class StudentUtils {
                 scanner.nextLine(); // consume the '\n'
             }
             students.add(new Student(MIS, name, studentSubjects));
-            
+            System.out.println("-------------------------------------------------\n");
         }
 
         return students;
@@ -72,7 +72,7 @@ public class StudentUtils {
         }
 
         System.out.println("The topper in " + subjectName + " is " + topper.getName());
-        
+        System.out.println("-------------------------------------------------\n");
 
     }
 
@@ -85,7 +85,7 @@ public class StudentUtils {
         }
 
         System.out.println("The topper in is " + topper.getName());
-        
+        System.out.println("-------------------------------------------------\n");
 
     }
 
