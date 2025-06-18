@@ -29,7 +29,7 @@ public class StudentUtils {
                 scanner.nextLine(); // consume the '\n'
             }
             students.add(new Student(MIS, name, studentSubjects));
-            System.out.println("-------------------------------------------------\n");
+            System.out.println("-------------------------------------------------");
         }
 
         return students;
@@ -54,14 +54,6 @@ public class StudentUtils {
         return subjects;
     }
 
-    // public void printStudents(List<Student> students) {
-    // int index = 1;
-    // for (Student student : students) {
-    // // student.printDetails(index);
-    // index++;
-    // }
-    // }
-
     public void printSubjectTopper(List<Student> students, List<Subject> subjects, Integer subjectId) {
         Student topper = students.get(0);
         String subjectName = subjects.stream().filter(s -> s.getId() == subjectId).toList().get(0).getName();
@@ -72,7 +64,7 @@ public class StudentUtils {
         }
 
         System.out.println("The topper in " + subjectName + " is " + topper.getName());
-        System.out.println("-------------------------------------------------\n");
+        System.out.println("-------------------------------------------------");
 
     }
 
@@ -84,9 +76,23 @@ public class StudentUtils {
             }
         }
 
-        System.out.println("The topper in is " + topper.getName());
-        System.out.println("-------------------------------------------------\n");
+        System.out.println("The Overall topper is " + topper.getName());
+        System.out.println("-------------------------------------------------");
 
+    }
+
+    public void printMarks(Student student) {
+        System.out.println("-------------------------------------------------");
+        System.out.println("Report Sheet of " + student.getName());
+        System.out.println("MIS: " + student.getMIS());
+        System.out.println("-------------------------------------------------");
+        for (Subject subject : student.getMarks()) {
+            System.out.println("Subject : " + subject.getName());
+            System.out.println("Marks : " + subject.getMarks());
+            System.out.println("Grade : " + subject.getGrade());
+            System.out.println("-------------------------------------------------");
+        }
+        System.out.println();
     }
 
 }

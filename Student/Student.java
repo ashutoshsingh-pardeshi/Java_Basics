@@ -11,6 +11,10 @@ public class Student {
         return name;
     }
 
+    public List<Subject> getMarks() {
+        return marks;
+    }
+
     public Float getAllMarks() {
         float total = 0;
         for (int i = 0; i < marks.size(); i++) {
@@ -66,6 +70,10 @@ public class Student {
 
         for (int i = 0; i < subjectCount; i++) {
             studentUtils.printSubjectTopper(students, subjects, subjects.get(i).getId());
+        }
+
+        for (Student student : students) {
+            studentUtils.printMarks(student);
         }
 
         studentUtils.printTopper(students);
