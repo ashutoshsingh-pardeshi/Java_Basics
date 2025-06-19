@@ -51,15 +51,15 @@ public class Subject {
     }
 
     Character assignGrade(Float marks) {
-        if (marks >= 90)
+        if ((marks / totalMarks) * 100 >= 90)
             return 'A';
-        else if (marks >= 80)
+        else if ((marks / totalMarks) * 100 >= 80)
             return 'B';
-        else if (marks >= 70)
+        else if ((marks / totalMarks) * 100 >= 70)
             return 'C';
-        else if (marks >= 60)
+        else if ((marks / totalMarks) * 100 >= 60)
             return 'D';
-        else if (marks >= 50)
+        else if ((marks / totalMarks) * 100 >= 50)
             return 'E';
         else
             return 'F';
