@@ -29,13 +29,13 @@ public class SubjectUtils {
 
     public float getSubjectMark(Student student, Integer subjectId) {
         Subject selectedSubject = student.getMarks().stream()
-                .filter(s -> s.getId() == subjectId).toList().get(0);
+                .filter(s -> s.getId() == subjectId).findFirst().orElse(null);
         return selectedSubject.getMarks();
     }
 
     public char getSubjectGrade(Student student, Integer subjectId) {
         Subject selectedSubject = student.getMarks().stream()
-                .filter(s -> s.getId() == subjectId).toList().get(0);
+                .filter(s -> s.getId() == subjectId).findFirst().orElse(null);
         return selectedSubject.getGrade();
     }
 }
