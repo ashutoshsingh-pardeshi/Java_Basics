@@ -1,14 +1,24 @@
 package Java.Subject;
 
 public class Subject {
+    private static Integer subjectID = 1;
     private Integer id;
     private String name;
     private Float marks;
+    private Float totalMarks;
     private Character grade;
 
-    public Subject(Integer id, String name) {
+    public Subject(String name, Float totalMarks) {
+        this.id = subjectID;
+        this.name = name;
+        this.totalMarks = totalMarks;
+        subjectID++;
+    }
+
+    public Subject(Integer id, String name, Float totalMarks) {
         this.id = id;
         this.name = name;
+        this.totalMarks = totalMarks;
     }
 
     public String getName() {
@@ -21,6 +31,10 @@ public class Subject {
 
     public Float getMarks() {
         return marks;
+    }
+
+    public Float getTotalMarks() {
+        return totalMarks;
     }
 
     public Character getGrade() {
