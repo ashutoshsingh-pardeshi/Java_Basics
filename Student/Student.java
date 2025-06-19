@@ -2,6 +2,9 @@ package Java.Student;
 
 import java.util.*;
 
+import Java.Subject.Subject;
+import Java.Subject.SubjectUtils;
+
 public class Student {
     private String name;
     private Integer MIS;
@@ -23,24 +26,8 @@ public class Student {
         return total;
     }
 
-    public float getSubjectMark(Integer subjectId) {
-        Subject selectedSubject = marks.stream()
-                .filter(s -> s.getId() == subjectId).toList().get(0);
-        return selectedSubject.getMarks();
-    }
-
-    public char getSubjectGrade(Integer subjectId) {
-        Subject selectedSubject = marks.stream()
-                .filter(s -> s.getId() == subjectId).toList().get(0);
-        return selectedSubject.getGrade();
-    }
-
     public Integer getMIS() {
         return MIS;
-    }
-
-    public void printMarks() {
-
     }
 
     // constructor
@@ -52,6 +39,7 @@ public class Student {
 
     public static void run() {
         StudentUtils studentUtils = new StudentUtils();
+        SubjectUtils subjectUtils = new SubjectUtils();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -72,8 +60,10 @@ public class Student {
             studentUtils.printSubjectTopper(students, subjects, subjects.get(i).getId());
         }
 
+        subjectUtils.displayAllSubjects(subjects);
+
         for (Student student : students) {
-            studentUtils.printMarks(student);
+            studentUtils.printStudentReport(student);
         }
 
         studentUtils.printTopper(students);

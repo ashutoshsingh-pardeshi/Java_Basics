@@ -1,4 +1,4 @@
-package Java.Student;
+package Java.Subject;
 
 public class Subject {
     private Integer id;
@@ -6,7 +6,7 @@ public class Subject {
     private Float marks;
     private Character grade;
 
-    Subject(Integer id, String name) {
+    public Subject(Integer id, String name) {
         this.id = id;
         this.name = name;
     }

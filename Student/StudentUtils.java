@@ -2,6 +2,9 @@ package Java.Student;
 
 import java.util.*;
 
+import Java.Subject.Subject;
+import Java.Subject.SubjectUtils;
+
 public class StudentUtils {
 
     public List<Student> storeStudentData(Integer studentCount, List<Subject> subjects, Scanner scanner) {
@@ -55,10 +58,11 @@ public class StudentUtils {
     }
 
     public void printSubjectTopper(List<Student> students, List<Subject> subjects, Integer subjectId) {
+        SubjectUtils subjectUtils = new SubjectUtils();
         Student topper = students.get(0);
         String subjectName = subjects.stream().filter(s -> s.getId() == subjectId).toList().get(0).getName();
         for (Student student : students) {
-            if (topper.getSubjectMark(subjectId) < student.getSubjectMark(subjectId)) {
+            if (subjectUtils.getSubjectMark(topper, subjectId) < subjectUtils.getSubjectMark(student, subjectId)) {
                 topper = student;
             }
         }
@@ -81,16 +85,15 @@ public class StudentUtils {
 
     }
 
-    public void printMarks(Student student) {
-        System.out.println("-------------------------------------------------");
-        System.out.println("Report Sheet of " + student.getName());
-        System.out.println("MIS: " + student.getMIS());
-        System.out.println("-------------------------------------------------");
+    public void printStudentReport(Student student) {
+        System.out.println("|---------------------------------|");
+        System.out.printf("| Report Sheet of %-15s |\n", student.getName());
+        System.out.printf("| MIS: %-26d |\n", student.getMIS());
+        System.out.println("|---------------------------------|");
+        System.out.printf("| %-13s |  %5s | %6s |\n", "Subject", "Marks", "Grade");
         for (Subject subject : student.getMarks()) {
-            System.out.println("Subject : " + subject.getName());
-            System.out.println("Marks : " + subject.getMarks());
-            System.out.println("Grade : " + subject.getGrade());
-            System.out.println("-------------------------------------------------");
+            System.out.printf("| %-13s | %-6.2f | %-6c |\n", subject.getName(), subject.getMarks(), subject.getGrade());
+            System.out.println("|---------------+--------+--------|");
         }
         System.out.println();
     }
