@@ -43,32 +43,83 @@ public class Student {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("How many student's data needs to be added : ");
-        int studentCount = scanner.nextInt();
-        scanner.nextLine(); // consume the '\n'
+        // Making the application user interactive (39)
+        System.out.println("|---------------------------------------|");
+        System.out.println("|  Welcome to Student Database Portal   |");
+        // System.out.println("|---------------------------------------|");
 
-        System.out.print("How many subject's data needs to be added : ");
-        int subjectCount = scanner.nextInt();
-        scanner.nextLine(); // consume the '\n'
+        int userInput = 0;
+        boolean studentExists = false, subjectExists = false;
+        List<Subject> subjects = new ArrayList<>();
+        List<Student> students = new ArrayList<>();
 
-        List<Subject> subjects = studentUtils.storeSubjectData(subjectCount, scanner);
+        while (userInput != 10) {
+            studentUtils.printMenu();
+            userInput = scanner.nextInt();
+            scanner.nextLine();
 
-        subjectUtils.displayAllSubjects(subjects);
+            if (userInput == 1) {
+                // Add a subject
+                System.out.print("How many subject's data needs to be added : ");
+                int subjectCount = scanner.nextInt();
+                scanner.nextLine(); // consume the '\n'
 
-        System.out.println();
+                studentUtils.storeSubjectData(subjects, subjectCount, scanner);
 
-        List<Student> students = studentUtils.storeStudentData(studentCount, subjects, scanner);
-        // studentUtils.printStudents(students);
+            } else if (userInput == 2) {
+                // Add a student
+                System.out.print("How many student's data needs to be added : ");
+                int studentCount = scanner.nextInt();
+                scanner.nextLine(); // consume the '\n'
 
-        for (int i = 0; i < subjectCount; i++) {
-            studentUtils.printSubjectTopper(students, subjects, subjects.get(i).getId());
+                studentUtils.storeStudentData(students, studentCount, subjects, scanner);
+            } else if (userInput == 3 && subjectExists) {
+                // View all subjects
+                subjectUtils.displayAllSubjects(subjects);
+            } else if (userInput == 4 && studentExists) {
+                // View all students
+                studentUtils.displayAllStudents(students);
+            } else if (userInput == 5 && subjectExists && studentExists) {
+                // Print student report
+                System.out.print("Enter student MIS : ");
+                int studentMIS = scanner.nextInt();
+                scanner.nextLine(); // consume the '\n'
+
+                Student student = students.stream().filter(s -> s.getMIS() == studentMIS).findFirst().orElse(null);
+
+                if (student != null)
+                    studentUtils.printStudentReport(student);
+                else
+                    System.out.println("Invalid MIS enetered !");
+
+            } else if (userInput == 6 && subjectExists && studentExists) { 
+                // View subject toppper
+
+                System.out.print("Enter subject ID : ");
+                int subjectID = scanner.nextInt();
+                scanner.nextLine(); // consume the '\n'
+
+                Subject subject = subjects.stream().filter(s -> s.getId() == subjectID).findFirst().orElse(null);
+                if (subject != null)
+                    studentUtils.printSubjectTopper(students, subjects, subjectID);
+                else
+                    System.out.println("Invalid subject ID enetered !");
+            } else if (userInput == 7 && subjectExists && studentExists) {
+                // View overall topper
+                studentUtils.printTopper(students);
+            } else if (userInput == 8) {
+                // Search a student
+                System.out.println("Functionality in development ... Please try later");
+            } else if (userInput == 9) {
+                // Search a subject
+                System.out.println("Functionality in development ... Please try later");
+            } else if(userInput == 10){
+                System.out.println(" Bye !");
+            }else if(!subjectExists || !studentExists){
+                if(!subjectExists) System.out.println("Subject DB missing !");
+                if(!studentExists) System.out.println("Student DB missing !");
+            }
         }
-
-        for (Student student : students) {
-            studentUtils.printStudentReport(student);
-        }
-
-        studentUtils.printTopper(students);
 
         scanner.close();
     }
