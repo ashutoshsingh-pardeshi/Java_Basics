@@ -7,8 +7,37 @@ import Java.Subject.SubjectUtils;
 
 public class StudentUtils {
 
-    public List<Student> storeStudentData(Integer studentCount, List<Subject> subjects, Scanner scanner) {
-        List<Student> students = new ArrayList<>();
+    // Print Menu
+    public void printMenu(){
+        System.out.println("|---------------------------------------|");
+        System.out.println("| Choose one of the options             |");
+        System.out.println("|---------------------------------------|");
+        System.out.println("| Id  |  Command                        |");
+        System.out.println("|-----+---------------------------------|");
+        System.out.println("|  1. |  Add a subject                  |");
+        System.out.println("|-----+---------------------------------|");
+        System.out.println("|  2. |  Add a student                  |");
+        System.out.println("|-----+---------------------------------|");
+        System.out.println("|  3. |  View all subjects              |"); // displayAllSubjects(subjects);
+        System.out.println("|-----+---------------------------------|");
+        System.out.println("|  4. |  View all students              |"); // displayAllStudents(students);
+        System.out.println("|-----+---------------------------------|");
+        System.out.println("|  5. |  Print student report           |"); // printStudentReport(student);
+        System.out.println("|-----+---------------------------------|");
+        System.out.println("|  6. |  View subject toppper           |"); // printSubjectTopper(students, subjects, subjectID)
+        System.out.println("|-----+---------------------------------|");
+        System.out.println("|  7. |  View overall topper            |"); // printTopper(students)
+        System.out.println("|-----+---------------------------------|");
+        System.out.println("|  8. |  Search a student               |");
+        System.out.println("|-----+---------------------------------|");
+        System.out.println("|  9. |  Search a subject               |");
+        System.out.println("|-----+---------------------------------|");
+        System.out.println("| 10. |  Exit                           |");
+        System.out.println("|---------------------------------------|");
+    }
+
+    // Adding student to DB
+    public void storeStudentData(List<Student> students, Integer studentCount, List<Subject> subjects, Scanner scanner) {
 
         for (int i = 0; i < studentCount; i++) {
             System.out.print("Student MIS : ");
@@ -35,11 +64,10 @@ public class StudentUtils {
             System.out.println("-------------------------------------------------");
         }
 
-        return students;
     }
 
-    public List<Subject> storeSubjectData(Integer subjectCount, Scanner scanner) {
-        List<Subject> subjects = new ArrayList<>();
+    // Adding subject to DB
+    public void storeSubjectData(List<Subject> subjects, Integer subjectCount, Scanner scanner) {
 
         for (int i = 0; i < subjectCount; i++) {
             System.out.print("Subject Name : ");
@@ -52,9 +80,10 @@ public class StudentUtils {
             subjects.add(new Subject(name, marks));
         }
 
-        return subjects;
+       
     }
 
+    // Printing subject topper
     public void printSubjectTopper(List<Student> students, List<Subject> subjects, Integer subjectId) {
         SubjectUtils subjectUtils = new SubjectUtils();
         Student topper = students.get(0);
@@ -70,6 +99,7 @@ public class StudentUtils {
 
     }
 
+    // Print overall topper
     public void printTopper(List<Student> students) {
         Student topper = students.get(0);
         for (Student student : students) {
@@ -83,6 +113,7 @@ public class StudentUtils {
 
     }
 
+    // Print student marks
     public void printStudentReport(Student student) {
         System.out.println("|---------------------------------|");
         System.out.printf("| Report Sheet of %-15s |\n", student.getName());
@@ -96,4 +127,14 @@ public class StudentUtils {
         System.out.println();
     }
 
+    // Print list of students
+    public void displayAllStudents(List<Student> students){
+        System.out.println("+-------+-------------+");
+        System.out.printf("| %-5s | %-11s |\n", "ID", "Name");
+        System.out.println("+-------+-------------+");
+        for (Student student : students) {
+            System.out.printf("| %-5d | %-11s |\n", student.getMIS(), student.getName());
+            System.out.println("+-------+-------------+");
+        }
+    }
 }
