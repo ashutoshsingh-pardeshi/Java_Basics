@@ -53,14 +53,16 @@ public class Student {
 
         List<Subject> subjects = studentUtils.storeSubjectData(subjectCount, scanner);
 
+        subjectUtils.displayAllSubjects(subjects);
+
+        System.out.println();
+
         List<Student> students = studentUtils.storeStudentData(studentCount, subjects, scanner);
         // studentUtils.printStudents(students);
 
         for (int i = 0; i < subjectCount; i++) {
             studentUtils.printSubjectTopper(students, subjects, subjects.get(i).getId());
         }
-
-        subjectUtils.displayAllSubjects(subjects);
 
         for (Student student : students) {
             studentUtils.printStudentReport(student);
