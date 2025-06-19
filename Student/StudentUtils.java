@@ -26,7 +26,7 @@ public class StudentUtils {
                 float marks = scanner.nextFloat();
 
                 // Creating a new subject instance
-                Subject newSubject = new Subject(subject.getId(), subject.getName());
+                Subject newSubject = new Subject(subject.getId(), subject.getName(), subject.getTotalMarks());
                 newSubject.assignMarks(marks);
                 studentSubjects.add(newSubject);
                 scanner.nextLine(); // consume the '\n'
@@ -42,16 +42,14 @@ public class StudentUtils {
         List<Subject> subjects = new ArrayList<>();
 
         for (int i = 0; i < subjectCount; i++) {
-            System.out.print("Subject Id : ");
-            Integer id = scanner.nextInt();
-            scanner.nextLine(); // consume the '\n'
-
             System.out.print("Subject Name : ");
             String name = scanner.nextLine();
-
+            System.out.print("Total Marks : ");
+            Float marks = scanner.nextFloat();
+            scanner.nextLine(); // consume the '\n'
             System.out.println("");
 
-            subjects.add(new Subject(id, name));
+            subjects.add(new Subject(name, marks));
         }
 
         return subjects;
