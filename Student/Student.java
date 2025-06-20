@@ -55,6 +55,7 @@ public class Student {
 
         while (userInput != 10) {
             studentUtils.printMenu();
+            System.out.print("Please eneter the command: ");
             userInput = scanner.nextInt();
             scanner.nextLine();
 
@@ -65,7 +66,7 @@ public class Student {
                 scanner.nextLine(); // consume the '\n'
 
                 studentUtils.storeSubjectData(subjects, subjectCount, scanner);
-
+                subjectExists = true;
             } else if (userInput == 2) {
                 // Add a student
                 System.out.print("How many student's data needs to be added : ");
@@ -73,6 +74,7 @@ public class Student {
                 scanner.nextLine(); // consume the '\n'
 
                 studentUtils.storeStudentData(students, studentCount, subjects, scanner);
+                studentExists = true;
             } else if (userInput == 3 && subjectExists) {
                 // View all subjects
                 subjectUtils.displayAllSubjects(subjects);
