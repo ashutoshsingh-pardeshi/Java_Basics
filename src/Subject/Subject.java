@@ -1,4 +1,4 @@
-package Java.Subject;
+package Subject;
 
 public class Subject {
     private static Integer subjectID = 1;

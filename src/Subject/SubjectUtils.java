@@ -1,8 +1,8 @@
-package Java.Subject;
+package Subject;
 
 import java.util.*;
 
-import Java.Student.Student;
+import Student.Student;
 
 public class SubjectUtils {
     public void displayAllSubjects(List<Subject> subjects) {

@@ -1,9 +1,9 @@
-package Java.Student;
+package Student;
 
 import java.util.*;
 
-import Java.Subject.Subject;
-import Java.Subject.SubjectUtils;
+import Subject.Subject;
+import Subject.SubjectUtils;
 
 public class StudentUtils {
 
