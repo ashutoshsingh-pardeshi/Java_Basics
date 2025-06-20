@@ -41,8 +41,7 @@ public class StudentUtils {
         System.out.println("|-----+---------------------------------|");
         System.out.println("|  5. |  Print student report           |"); // printStudentReport(student);
         System.out.println("|-----+---------------------------------|");
-        System.out.println("|  6. |  View subject topper           |"); // printSubjectTopper(students, subjects,
-                                                                        // subjectID)
+        System.out.println("|  6. |  View subject topper           |"); // printSubjectTopper(students, subjects, subjectID)
         System.out.println("|-----+---------------------------------|");
         System.out.println("|  7. |  View overall topper            |"); // printTopper(students)
         System.out.println("|-----+---------------------------------|");
@@ -135,9 +134,10 @@ public class StudentUtils {
         System.out.println("|---------------------------------|");
         System.out.printf("| %-13s |  %5s | %6s |\n", "Subject", "Marks", "Grade");
         studentReport.subjectMarks().forEach((subject, details) -> {
-            System.out.printf("| %-13s | %-6d | %-6c |\n", subject, details.marks(), details.grade());
             System.out.println("|---------------+--------+--------|");
+            System.out.printf("| %-13s | %-6d | %-6c |\n", subject, details.marks(), details.grade());
         });
+        System.out.println("|---------------------------------|");
         System.out.println();
         // System.out.println("Invalid MIS enetered !");
     }
