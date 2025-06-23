@@ -56,4 +56,29 @@ public class SubjectDAO {
         return subjects;
     }
 
+    // Getting specific subject
+    public Subject getSubjectByID(Integer subjectId) {
+        Subject subject = new Subject();
+
+        // prepared query string
+        String queryString = "SELECT * FROM subjects WHERE id = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(queryString)) {
+            // setting the parameter
+            stmt.setInt(1, subjectId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    subject.setName(rs.getString("Name"));
+                    subject.setTotalMarks(rs.getInt("totalMarks"));
+                }
+            } catch (Exception e) {
+                System.err.println("Error in SubjectDAO : " + e);
+            }
+        } catch (Exception e) {
+            System.err.println("Error in SubjectDAO : " + e);
+        }
+
+        return subject;
+    }
 }

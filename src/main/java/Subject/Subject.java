@@ -30,4 +30,12 @@ public class Subject {
     public Integer getId() {
         return ID;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTotalMarks(Integer totalMarks) {
+        this.totalMarks = totalMarks;
+    }
 }

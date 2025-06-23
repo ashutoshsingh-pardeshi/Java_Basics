@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4e81432-7ca7-4b54-8da5-8833a681b379" name="Changes" comment="" />
+    <list default="true" id="c4e81432-7ca7-4b54-8da5-8833a681b379" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Marks/MarksDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Marks/MarksDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Student/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Student/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Student/StudentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Student/StudentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Student/StudentUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Student/StudentUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Subject/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Subject/Subject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Subject/SubjectDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Subject/SubjectDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Subject/SubjectUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Subject/SubjectUtils.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

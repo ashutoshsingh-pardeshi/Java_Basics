@@ -47,7 +47,7 @@ public class Student {
         int userInput = 0;
         List<Student> students = new ArrayList<>();
 
-        while (userInput != 10) {
+        while (userInput != -1) {
             studentUtils.printMenu();
             System.out.print("Please eneter the command: ");
             userInput = scanner.nextInt();
@@ -69,15 +69,22 @@ public class Student {
 
                 studentUtils.storeStudentData(studentCount, scanner);
 
-            } else if (userInput == 3) { // View all subjects
+            } else if (userInput == 3) { // Add a subject's marks for all students
+
+                System.out.print("Enter the subject id : ");
+                int subjectID = scanner.nextInt();
+                scanner.nextLine(); // consume the '\n'
+                subjectUtils.updateSubjectMarks(subjectID, scanner);
+
+            } else if (userInput == 4) { // View all subjects
 
                 subjectUtils.displayAllSubjects();
 
-            } else if (userInput == 4) { // View all students
+            } else if (userInput == 5) { // View all students
 
                 studentUtils.displayAllStudents();
 
-            } else if (userInput == 5) { // Print student report
+            } else if (userInput == 6) { // Print student report
 
                 System.out.print("Enter student MIS : ");
                 Integer studentMIS = scanner.nextInt();
@@ -85,8 +92,7 @@ public class Student {
 
                 studentUtils.printStudentReport(studentMIS);
 
-            } else if (userInput == 6) {
-                // View subject toppper
+            } else if (userInput == 7) { // View subject toppper
 
                 System.out.println("Functionality in development ... Please try later");
                 // System.out.print("Enter subject ID : ");
@@ -99,16 +105,16 @@ public class Student {
                 // studentUtils.printSubjectTopper(students, subjects, subjectID);
                 // else
                 // System.out.println("Invalid subject ID enetered !");
-            } else if (userInput == 7) {
+            } else if (userInput == 8) {
                 // View overall topper
                 studentUtils.printTopper(students);
-            } else if (userInput == 8) {
+            } else if (userInput == 9) {
                 // Search a student
                 System.out.println("Functionality in development ... Please try later");
-            } else if (userInput == 9) {
+            } else if (userInput == 10) {
                 // Search a subject
                 System.out.println("Functionality in development ... Please try later");
-            } else if (userInput == 10) {
+            } else if (userInput == -1) {
                 System.out.println(" Bye !");
                 break;
             } else {

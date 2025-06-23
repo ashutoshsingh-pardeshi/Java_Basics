@@ -24,14 +24,37 @@ public class MarksDAO {
             if (marks.getMarks() == null) {
                 stmt.setNull(3, Types.INTEGER);
             } else {
-            stmt.setInt(3, marks.getMarks());
+                stmt.setInt(3, marks.getMarks());
             }
             // stmt.setString(4, String.valueOf(marks.getGrades()));
 
             // executing the query
             stmt.executeUpdate();
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Error from MarksDOA.java : " + e);
+        }
+    }
+
+    // add specific subject marks for a student
+    public void addSubjectMarks(Integer subjectID, Integer studentMIS, Integer marks) {
+
+        // prepared query
+        String queryString = """
+                UPDATE marks
+                SET marks = ?
+                WHERE student_MIS = ? AND subject_id = ?
+                """;
+
+        try (PreparedStatement stmt = conn.prepareStatement(queryString)) {
+            // adding parameters to the queryString
+            stmt.setInt(1, marks);
+            stmt.setInt(2, studentMIS);
+            stmt.setInt(3, subjectID);
+
+            // executing query
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error from MarksDOA.java : " + e);
         }
     }
 

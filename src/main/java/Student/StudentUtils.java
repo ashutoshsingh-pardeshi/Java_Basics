@@ -29,21 +29,24 @@ public class StudentUtils {
         System.out.println("|-----+---------------------------------|");
         System.out.println("|  2. |  Add a student                  |");
         System.out.println("|-----+---------------------------------|");
-        System.out.println("|  3. |  View all subjects              |"); // displayAllSubjects(subjects);
+        System.out.println("|  3. |  Add a subject's marks          |"); // displayAllSubjects(subjects);
         System.out.println("|-----+---------------------------------|");
-        System.out.println("|  4. |  View all students              |"); // displayAllStudents(students);
+        System.out.println("|  4. |  View all subjects              |"); // displayAllSubjects(subjects);
         System.out.println("|-----+---------------------------------|");
-        System.out.println("|  5. |  Print student report           |"); // printStudentReport(student);
+        System.out.println("|  5. |  View all students              |"); // displayAllStudents(students);
         System.out.println("|-----+---------------------------------|");
-        System.out.println("|  6. |  View subject topper           |"); // printSubjectTopper(students, subjects, subjectID)
+        System.out.println("|  6. |  Print student report           |"); // printStudentReport(student);
         System.out.println("|-----+---------------------------------|");
-        System.out.println("|  7. |  View overall topper            |"); // printTopper(students)
+        System.out.println("|  7. |  View subject topper            |"); // printSubjectTopper(students, subjects,
+                                                                         // subjectID)
         System.out.println("|-----+---------------------------------|");
-        System.out.println("|  8. |  Search a student               |");
+        System.out.println("|  8. |  View overall topper            |"); // printTopper(students)
         System.out.println("|-----+---------------------------------|");
-        System.out.println("|  9. |  Search a subject               |");
+        System.out.println("|  9. |  Search a student               |");
         System.out.println("|-----+---------------------------------|");
-        System.out.println("| 10. |  Exit                           |");
+        System.out.println("| 10. |  Search a subject               |");
+        System.out.println("|-----+---------------------------------|");
+        System.out.println("| -1. |  Exit                           |");
         System.out.println("|---------------------------------------|");
     }
 

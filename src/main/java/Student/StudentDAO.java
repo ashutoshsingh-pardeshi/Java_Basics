@@ -52,4 +52,23 @@ public class StudentDAO {
         }
         return students;
     }
+
+    // Getting all student IDs
+    public List<Integer> getAllStudentsMIS() {
+        List<Integer> MISList = new ArrayList<>();
+
+        // prepared statement
+        String queryString = "SELECT MIS FROM students";
+
+        try (PreparedStatement stmt = conn.prepareStatement(queryString);
+                ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                MISList.add(rs.getInt("MIS"));
+            }
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+
+        return MISList;
+    }
 }
