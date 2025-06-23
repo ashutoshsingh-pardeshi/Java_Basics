@@ -110,9 +110,20 @@ public class Student {
                 System.out.println("Functionality in development ... Please try later");
             } else if (userInput == 10) {
                 System.out.println(" Bye !");
+                break;
             } else {
                 System.out.println("Invalid input");
             }
+
+            // Making loop a bit more interactive
+
+            System.out.print("Do you want to continue (Y/N) :");
+            String userAnswer = scanner.nextLine();
+            List<String> postiveReply = new ArrayList<>(Arrays.asList("Yes", "yes", "Y", "y"));
+            if (!postiveReply.contains(userAnswer)) {
+                userInput = 10;
+            }
+
         }
 
         scanner.close();
