@@ -78,7 +78,7 @@ public class StudentUtils {
             System.out.println("Add subject marks below");
             for (Subject subject : studentSubjects) {
                 System.out.print("Add marks for " + subject.getName() + " : ");
-                int marks = scanner.nextInt();
+                Integer marks = scanner.nextInt();
                 scanner.nextLine(); // consume the '\n'
 
                 // Creating a new mark instance

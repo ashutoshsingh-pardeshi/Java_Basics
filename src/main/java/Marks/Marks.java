@@ -3,14 +3,14 @@ package Marks;
 public class Marks {
     private int studentMIS;
     private int subjectID;
-    private int marks;
+    private Integer marks;
     private char grade;
 
     public Marks(Integer studentMIS, Integer subjectID, Integer marks) {
         this.studentMIS = studentMIS;
         this.subjectID = subjectID;
         this.marks = marks;
-        this.grade = assignGrade(marks, subjectID);
+        // this.grade = assignGrade(marks, subjectID);
     }
 
     Character assignGrade(Integer marks, Integer subjectID) {
@@ -39,7 +39,7 @@ public class Marks {
         return subjectID;
     }
 
-    public int getMarks() {
+    public Integer getMarks() {
         return marks;
     }
 

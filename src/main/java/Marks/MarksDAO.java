@@ -11,6 +11,7 @@ public class MarksDAO {
         this.conn = conn;
     }
 
+    // General marks entry
     public void addMarks(Marks marks) {
         // prepared query
         String queryString = "INSERT INTO marks VALUES (?, ?, ?)";
@@ -19,8 +20,13 @@ public class MarksDAO {
             // Adding the data to the query
             stmt.setInt(1, marks.getStudentMIS());
             stmt.setInt(2, marks.getSubjectID());
+            // Handling null values for marks
+            if (marks.getMarks() == null) {
+                stmt.setNull(3, Types.INTEGER);
+            } else {
             stmt.setInt(3, marks.getMarks());
-            stmt.setString(4, String.valueOf(marks.getGrades()));
+            }
+            // stmt.setString(4, String.valueOf(marks.getGrades()));
 
             // executing the query
             stmt.executeUpdate();
@@ -66,6 +72,9 @@ public class MarksDAO {
             // Firing the query
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
+                    Integer marks = rs.getInt("marks");
+                    if (rs.wasNull())
+                        marks = null;
                     if (once) {
                         firstName = rs.getString("firstName");
                         lastName = rs.getString("lastName");
@@ -74,7 +83,7 @@ public class MarksDAO {
                             rs.getString("subjectName"),
                             new SubjectDetails(
                                     rs.getInt("totalMarks"),
-                                    rs.getInt("marks"),
+                                    marks,
                                     null));
                 }
             }
