@@ -1,13 +1,9 @@
 package Subject;
 
-import java.util.*;
-
-import Marks.MarksDAO;
-
 import java.sql.*;
-
-import Student.Student;
-import Student.StudentDAO;
+import java.util.*;
+import Marks.*;
+import Student.*;
 
 public class SubjectUtils {
 
@@ -25,6 +21,8 @@ public class SubjectUtils {
     // Adding subject to DB
     public void storeSubjectData(Integer subjectCount, Scanner scanner) {
 
+        Integer subjectId = null;
+
         for (int i = 0; i < subjectCount; i++) {
             System.out.print("Subject Name : ");
             String name = scanner.nextLine();
@@ -34,10 +32,35 @@ public class SubjectUtils {
             scanner.nextLine(); // consume the '\n'
 
             Subject subject = new Subject(name, totalMarks);
-
-            subjectDAO.addSubject(subject);
+            subjectId = subjectDAO.addSubject(subject);
         }
 
+        // Initializing every student's marks in that subjecvt as null
+        List<Integer> MISList = studentDAO.getAllStudentsMIS();
+        if (subjectId != null) {
+            for (Integer mis : MISList) {
+                Marks marks = new Marks(mis, subjectId, null);
+                marksDAO.addMarks(marks);
+            }
+        } else
+            System.err.println("Something went wrong !");
+
+    }
+
+    // Add marks for one particular subject
+    public void updateSubjectMarks(Integer subjectID, Scanner scanner) {
+        // Getting list of all students
+        List<Student> StudentList = studentDAO.getAllStudents();
+        Subject subject = subjectDAO.getSubjectByID(subjectID);
+
+        System.out.println("Adding marks for " + subject.getName() + " out of " + subject.getTotalMarks());
+        // Looping through them to add/update marks
+        for (Student student : StudentList) {
+            System.out.print("Enter marks for " + student.getName() + " : ");
+            Integer marks = scanner.nextInt();
+            scanner.nextLine();
+            marksDAO.addSubjectMarks(subjectID, student.getMIS(), marks);
+        }
     }
 
     public void displayAllSubjects() {

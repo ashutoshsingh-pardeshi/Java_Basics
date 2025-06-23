@@ -1,16 +1,10 @@
 package Student;
 
 import java.util.*;
-
-import Marks.Marks;
-import Marks.MarksDAO;
-import Marks.MarksDAO.StudentReport;
-
 import java.sql.*;
-
-import Subject.Subject;
-import Subject.SubjectDAO;
-import Subject.SubjectUtils;
+import Marks.*;
+import Marks.MarksDAO.StudentReport;
+import Subject.*;
 
 public class StudentUtils {
     private final StudentDAO studentDAO;
